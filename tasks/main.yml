@@ -3,21 +3,21 @@
   file:
     path: "{{ item }}"
     state: directory
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    owner: "{{ mysql_user }}"
+    group: "{{ mysql_user }}"
     recurse: yes
   with_items:
-    - "{{ backups_dir }}"
-    - "{{ conf_dir }}"
-    - "{{ lib_dir }}"
+    - "{{ mysql_backups_dir }}"
+    - "{{ mysql_conf_dir }}"
+    - "{{ mysql_lib_dir }}"
 
 - name: Copy mysql config files
   template:
     src: "{{ item }}"
-    dest: "{{ conf_dir }}/{{ item }}"
+    dest: "{{ mysql_conf_dir }}/{{ item }}"
     force: yes
-    owner: "{{ user }}"
-    group: "{{ user }}"
+    owner: "{{ mysql_user }}"
+    group: "{{ mysql_user }}"
   with_items:
     - "character_set.cnf"
 
