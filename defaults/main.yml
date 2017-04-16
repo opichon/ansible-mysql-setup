@@ -1,0 +1,9 @@
+---
+backups_dir: /var/mysql/backups
+conf_dir: /var/mysql/conf.d
+lib_dir: /var/mysql/lib
+
+character_set: utf8mb4
+collation: utf8mb4_unicode_520_ci
+
+user: mysql

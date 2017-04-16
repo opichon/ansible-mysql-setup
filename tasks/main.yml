@@ -1,0 +1,23 @@
+---
+- name: Ensure mysql dirs exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    recurse: yes
+  with_items:
+    - "{{ backups_dir }}"
+    - "{{ conf_dir }}"
+    - "{{ lib_dir }}"
+
+- name: Copy mysql config files
+  template:
+    src: "{{ item }}"
+    dest: "{{ conf_dir }}/{{ item }}"
+    force: yes
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - "character_set.cnf"
+
